@@ -6,7 +6,7 @@ VOLUME "/app"
 RUN mkdir -p /app
 WORKDIR /app
 COPY . /app
-RUN mkdir -p /var/log/supervisor &&
-RUN mkdir -p /run/supervisor &&
-RUN chmod 777 /var/run &&
+RUN mkdir -p /var/log/supervisor
+RUN mkdir -p /run/supervisor
+RUN chmod 777 /var/run
 RUN pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
