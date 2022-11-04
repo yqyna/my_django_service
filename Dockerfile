@@ -3,7 +3,7 @@ LABEL AUTHOR="yuhaiping"
 MAINTAINER yqyn
 ENV PYTHONUNBUFFERED 1
 VOLUME "/app"
-RUN mkdir /app
+RUN mkdir -p /app
 WORKDIR /app
 COPY . /app
 RUN mkdir -p /var/log/supervisor &&
