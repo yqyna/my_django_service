@@ -1,0 +1,42 @@
+version: '3.5'
+services:
+    my_django_service:
+      build:
+        context: ./
+        dockerfile: ./Dockerfile
+      environment:
+        PYTHONUNBUFFERED: 1
+        TZ: Asia/Shanghai
+#      command: uwsgi --ini etc-uwsgi.ini python manage.py runserver 0.0.0.0:8001
+#      command: >
+#        bash -c "
+#                nohup python manage.py runserver 0.0.0.0:8001 >& uwsgi_out.log 2>&1 &
+#                nohup celery --app=celery_tasks.celery worker -l INFO >& celery_out.log 2>&1
+#                "
+      command: >
+        bash -c "
+                 supervisord -c service_config/supervisord.conf &&
+                 supervisorctl -c service_config/supervisord.conf start all
+                "
+#      command: >
+#        bash -c "uwsgi --ini uwsgi.ini"
+      restart: always
+      volumes:
+#        - api_data:/docker_api
+        - ../my_django_service:/app
+        # (HOST:CONTAINER)
+      ports:
+        - "8001:8001"
+        - "8000:8000"
+        - "6379:6379"
+        - "9001:9001"
+        # (HOST:CONTAINER)
+      networks:
+        - proxy
+
+volumes:
+    api_data:
+
+networks:
+  proxy:
+    name: my_network
