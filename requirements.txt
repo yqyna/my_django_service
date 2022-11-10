@@ -17,3 +17,5 @@ django-timezone-field==4.2.1
 djangorestframework==3.11.0
 djangorestframework-jwt==1.11.0
 supervisor
+pydantic==1.9.0
+pymongo==4.1.1
