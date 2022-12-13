@@ -228,6 +228,16 @@ LOGGING = {
             'level': 'DEBUG',
             'class': 'logging.StreamHandler',
         },
+        'logstash': {
+            'level': 'WARNING',
+            'class': 'logstash.TCPLogstashHandler',
+            'host': 'ip',
+            'port': 5000,  # Default value: 5000
+            'version': 1,
+            'message_type': 'logstash',  # 'type' field in logstash message. Default value: 'logstash'.
+            'fqdn': False,  # Fully qualified domain name. Default value: false.
+            'tags': ['django.request'],  # list of tags. Default: None.
+        },
     },
     'loggers': {
         # default日志
@@ -240,6 +250,12 @@ LOGGING = {
             'handlers': ['console'],
             'propagate': True,
             'level': 'INFO',
+        },
+        # 请求日志
+        'django.request': {
+            'handlers': ['logstash'],
+            'level': 'WARNING',
+            'propagate': True,
         },
     }
 }
