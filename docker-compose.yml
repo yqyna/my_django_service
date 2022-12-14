@@ -1,6 +1,7 @@
 version: '3.5'
 services:
     my_django_service:
+      container_name: my_django-container
       build:
         context: ./
         dockerfile: ./Dockerfile
@@ -22,7 +23,6 @@ services:
 #        bash -c "uwsgi --ini uwsgi.ini"
       restart: always
       volumes:
-#        - api_data:/docker_api
         - ../my_django_service:/app
         # (HOST:CONTAINER)
       ports:
@@ -31,6 +31,22 @@ services:
         - "6379:6379"
         - "9001:9001"
         # (HOST:CONTAINER)
+      networks:
+        - proxy
+
+    nginx:
+      container_name: nginx-container
+      build: ./nginx
+
+      restart: always
+      ports:
+        - "8080:80"
+      volumes:
+        - ../my_django_service:/app
+        - ./logs/nginx_service:/var/log/nginx
+      depends_on:
+        - my_django_service
+
       networks:
         - proxy
 
