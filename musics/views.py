@@ -1,6 +1,7 @@
 from rest_framework import viewsets, status
 from rest_framework.decorators import action
 from django.shortcuts import get_object_or_404
+from rest_framework.parsers import JSONParser
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 
@@ -12,8 +13,8 @@ from musics.serializers import MusicSerializer
 class MusicViewSet(viewsets.ModelViewSet):
     queryset = Music.objects.all()
     serializer_class = MusicSerializer
-    # permission_classes = (IsAuthenticated,)
-    # parser_classes = (JSONParser,)
+    permission_classes = (IsAuthenticated,)
+    parser_classes = (JSONParser,)
 
     # [GET] /api/musics/{pk}/detail/
     @action(detail=True, methods=['get'], url_path='detail')
