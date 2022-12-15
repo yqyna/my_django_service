@@ -6,8 +6,8 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 
 from celery_tasks.tasks import test_task
-from musics.models import Music
-from musics.serializers import MusicSerializer
+from apps.musics.models import Music
+from apps.musics import MusicSerializer
 
 
 class MusicViewSet(viewsets.ModelViewSet):
