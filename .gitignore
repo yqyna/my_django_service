@@ -10,6 +10,7 @@ venv
 config.py
 m_config.py
 *.log
+*.log.*
 test
 *.pybk
 *.jpg
