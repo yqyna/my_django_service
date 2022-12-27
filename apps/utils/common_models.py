@@ -22,10 +22,6 @@ class AbstractAfterSaveModel(models.Model):
     def __init__(self, *args, **kwargs):
         super(AbstractAfterSaveModel, self).__init__(*args, **kwargs)
         self.__pre = model_to_dict(self, fields=self.__class__.pre_cache_fields)
-        # if self.__class__.pre_cache_fields:
-        #     fields = set(self.__class__.pre_cache_fields).intersection(set(res.keys()))
-        #     self.PreClass = namedtuple('{}Pre'.format(self.__class__.__name__), list(fields))
-        #     self.__pre = self.PreClass(**res)
 
     def save(self, force_insert=False, force_update=False, *args, **kwargs):
         created = self._state.adding
