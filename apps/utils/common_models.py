@@ -35,3 +35,14 @@ class AbstractAfterSaveModel(models.Model):
 
     def after_save(self, pre, created=False):
         pass
+
+
+class AbstractTimeModel(models.Model):
+    """
+    class 包含创建时间和修改时间的基础类
+    """
+    create_time = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='创建时间')
+    modify_time = models.DateTimeField(auto_now=True, db_index=True, verbose_name='更新时间')
+
+    class Meta:
+        abstract = True
