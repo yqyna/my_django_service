@@ -38,6 +38,9 @@ services:
       container_name: nginx-container
       build: ./nginx
 
+      environment:
+        TZ: Asia/Shanghai
+
       restart: always
       ports:
         - "8080:80"
@@ -63,6 +66,7 @@ services:
         - "12201:12201/udp"
       environment:
         LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+        TZ: Asia/Shanghai
       networks:
         - proxy
       depends_on:
