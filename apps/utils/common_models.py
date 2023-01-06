@@ -2,11 +2,16 @@
 # @FileName  :common_models.py
 # @Time      :2022/11/21 15:57
 # @Author    : yuhaiping
+import uuid
 
 from collections import namedtuple
 
 from django.db import models
 from django.forms.models import model_to_dict
+
+
+def gen_id():
+    return uuid.uuid4().hex
 
 
 class AbstractAfterSaveModel(models.Model):
