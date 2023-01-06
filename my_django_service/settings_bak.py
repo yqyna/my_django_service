@@ -258,3 +258,8 @@ LOGGING = {
         },
     }
 }
+
+MINIO_HOST = "ip:port"
+MINIO_ACCESS_KEY = "ACCESS_KEY"
+MINIO_SECRET_KEY = "SECRET_KEY"
+MINIO_BUCKET = 'test'
