@@ -57,6 +57,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_celery_beat',
     'apps.musics',
+    'apps.app_user',
+    'apps.system',
 ]
 
 MIDDLEWARE = [
