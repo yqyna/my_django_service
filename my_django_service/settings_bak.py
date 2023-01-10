@@ -102,7 +102,7 @@ DATABASES = {
         'PASSWORD': 'PASSWORD',
         'HOST': 'HOST',
         'PORT': '3306',
-    }
+    },
     # 'default': {
     #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
     #     'NAME': 'postgres',
@@ -111,6 +111,14 @@ DATABASES = {
     #     'HOST': '172.29.29.23',
     #     'PORT': 5432,
     # }
+    'write': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'NAME',
+        'USER': 'USER',
+        'PASSWORD': 'PASSWORD',
+        'HOST': 'HOST',
+        'PORT': '3306',
+    },
 }
 
 AUTH_USER_MODEL = 'app_user.Users'
@@ -263,3 +271,5 @@ MINIO_HOST = "ip:port"
 MINIO_ACCESS_KEY = "ACCESS_KEY"
 MINIO_SECRET_KEY = "SECRET_KEY"
 MINIO_BUCKET = 'test'
+
+DATABASE_ROUTERS = ['apps.router.Router']
