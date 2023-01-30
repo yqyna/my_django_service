@@ -28,7 +28,6 @@ services:
       ports:
         - "8001:8001"
         - "8000:8000"
-        - "6379:6379"
         - "9001:9001"
         # (HOST:CONTAINER)
       networks:
