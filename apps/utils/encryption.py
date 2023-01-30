@@ -22,10 +22,13 @@ class EncryptionHelper(object):
         return encrypted_text
 
     def decrypt(self, encrypted_text):
-        text_decrypted = str(
-            self.aes.decrypt(base64.decodebytes(bytes(encrypted_text, encoding='utf8'))).rstrip(b'\0').decode(
-                "utf8"))
-        # return bytes
+        try:
+            text_decrypted = str(
+                self.aes.decrypt(base64.decodebytes(bytes(encrypted_text, encoding='utf8'))).rstrip(b'\0').
+                decode("utf8"))
+        except Exception as e:
+            print("error:", e)
+            return False
         return text_decrypted
 
     @staticmethod
@@ -39,10 +42,10 @@ class EncryptionHelper(object):
 class AESOperator(object):
 
     def __init__(self):
-        self.key = django_settings.AES_KEY
+        self.key = django_settings.AES_KEY or "123456"
         # 16-bit character, used to fill in missing content,
         # can be fixed value or random string, specific selection depends on requirements.
-        self.iv = django_settings.AES_IV
+        self.iv = django_settings.AES_IV or "123456"
         self.key = self.key.encode('utf-8')
         self.iv = self.iv.encode('utf-8')
 
@@ -90,5 +93,5 @@ if __name__ == '__main__':
     value = EncryptionHelper().encrypt("31111")
     print(value)
 
-    value = EncryptionHelper().decrypt("FpQUPGlWd5QS2oUc1Yv8mQ==")
+    value = EncryptionHelper().decrypt("4aEDObjMBH4QFt0AjOiX2Q==")
     print(value)
