@@ -273,3 +273,6 @@ MINIO_SECRET_KEY = "SECRET_KEY"
 MINIO_BUCKET = 'test'
 
 DATABASE_ROUTERS = ['apps.router.Router']
+
+AES_KEY = "123456"
+AES_IV = "afafasfaw"

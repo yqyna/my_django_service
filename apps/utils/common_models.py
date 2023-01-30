@@ -51,3 +51,22 @@ class AbstractTimeModel(models.Model):
 
     class Meta:
         abstract = True
+
+
+class AbstractStateModel(models.Model):
+    """
+    class 包含创建时间和修改时间的基础类
+    """
+    STATE_CHOICES = (
+        (0, u'有效'),
+        (1, u'临时记录'),
+        (9, u'删除'),
+    )
+    state = models.PositiveSmallIntegerField(choices=STATE_CHOICES, default=0, db_index=True, verbose_name='记录状态')
+
+    class Meta:
+        abstract = True
+
+    def logic_delete(self):
+        self.state = 9
+        self.save()
