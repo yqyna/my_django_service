@@ -41,3 +41,23 @@ class Users(AbstractUser, AbstractTimeModel):
         ordering = ("-create_time",)
 
 
+class UserWebAccountManage(AbstractTimeModel):
+    """
+    用户品台账号管理表
+    """
+    user_id = models.IntegerField(default=0, verbose_name='用户ID', help_text="用户ID")
+    web_name = models.CharField(max_length=255, verbose_name="网址名称", null=True, blank=True, help_text="网址名称")
+    web_site = models.CharField(max_length=255, verbose_name="网址", null=True, blank=True, help_text="网址")
+    account = models.CharField(default='', max_length=150, verbose_name="注册账号", help_text="注册账号")
+    password = models.CharField(default='', max_length=128, verbose_name='账号密码', help_text="账号密码")
+    mobile = models.CharField(max_length=255, verbose_name="绑定手机号", null=True, blank=True, help_text="绑定手机号")
+    email = models.EmailField(max_length=255, verbose_name="绑定邮箱", null=True, blank=True, help_text="绑定邮箱")
+
+    class Meta:
+        app_label = 'app_user'
+        db_table = 'app_user_web_account_manage'
+        verbose_name = '用户品台账号管理表'
+        verbose_name_plural = verbose_name
+        ordering = ("-create_time",)
+
+
