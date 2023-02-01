@@ -17,3 +17,15 @@ class Router:
         print("write")
         print(model._meta.app_label)
         return 'write'
+
+    def allow_relation(self, obj1, obj2, **hints):
+        """
+        Allow relations if a model in the user app is involved.
+        """
+        if obj1._meta.app_label == 'app_user' or \
+                obj2._meta.app_label == 'app_user':
+            return True
+        elif 'app_user' not in [obj1._meta.app_label, obj2._meta.app_label]:
+            return True
+
+        return False
