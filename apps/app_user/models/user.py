@@ -61,3 +61,16 @@ class UserWebAccountManage(AbstractTimeModel):
         ordering = ("-create_time",)
 
 
+class BookInfoManage(models.Model):
+
+    book = models.CharField(max_length=255, verbose_name="书名", null=True, blank=True, help_text="书名")
+    author = models.CharField(max_length=255, verbose_name="作者", null=True, blank=True, help_text="作者")
+    intro = models.CharField(max_length=500, verbose_name="介绍", null=True, blank=True, help_text="介绍")
+    detail_url = models.CharField(max_length=255, verbose_name="详情URL", null=True, blank=True, help_text="详情URL")
+    source = models.CharField(max_length=255, verbose_name="来源", null=True, blank=True, help_text="来源")
+
+    class Meta:
+        app_label = 'app_user'
+        db_table = 'app_user_book_manage'
+        verbose_name = '书库'
+        verbose_name_plural = verbose_name
