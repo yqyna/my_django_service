@@ -23,4 +23,5 @@ kafka-python==2.0.2
 python-logstash==0.4.8
 pandas==1.1.5
 minio==7.1.11
+Pillow==4.3.0
 openai
