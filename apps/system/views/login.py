@@ -4,8 +4,8 @@
 # @Author    : yuhaiping
 import uuid
 
-from django.http import HttpResponse
-
+from apps.app_user.models import Users
+from apps.utils.error_code import ErrorCode
 from apps.utils import captcha
 from apps.utils.response import APIResponse
 
@@ -33,3 +33,29 @@ def get_captcha(request):
                     "key": union_key,
                     "image_base": "data:image/png;base64," + data
                   })
+
+
+def login_by_password(request):
+
+    # captcha
+    # :
+    # "bhgf"
+    # captchaKey
+    # :
+    # "797f758b148247ceb5061c1e8c75a162"
+    # password
+    # :
+    # "6512bd43d9caa6e02c990b0a82652dca"
+    # username
+    # :
+    # "11"
+    pass
+    params = request.params
+    captcha = params.get('captcha')
+    captchaKey = params.get('captchaKey')
+    password = params.get("password")
+    username = params.get("username")
+
+    user_obj = Users.objects.filter(username=username)
+    if not user_obj:
+        return APIResponse(error=ErrorCode.API_USER_NOT_EXIST_ERROR)

@@ -89,4 +89,4 @@ if __name__ == '__main__':
     print(gen_img_captcha())
     code, data = gen_img_captcha()
     st = "data:image/png;base64," + data
-    print(st)
+    print(code, st)

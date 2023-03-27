@@ -17,4 +17,5 @@ class ErrorCode(object):
     API_REQUEST_METHOD_ERROR = ('1001003', u'请求方法错误')
     API_FILE_NOT_EXIST_ERROR = ('1001004', u'请求文件不存在')
     API_ACCESS_TOKEN_NOT_EXIST_ERROR = ('1001005', u'请求入参缺少ACCESS_TOKEN')
+    API_USER_NOT_EXIST_ERROR = ('1001005', u'账号不存在')
 
